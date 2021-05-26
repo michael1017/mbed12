@@ -36,18 +36,30 @@ int main() {
 
    while(1) {
 
-   //TODO: revise this value according to your result
-   servo_control(65.77);
+      //TODO: revise this value according to your result
+      servo_control(43.57);
 
-   steps = 0;
-   t.reset();
-   t.start();
+      steps = 0;
+      t.reset();
+      t.start();
 
-   ThisThread::sleep_for(8000ms);
+      ThisThread::sleep_for(5000ms);
 
-   float time = t.read();
+      float time1 = t.read();
 
-   printf("%1.3f\r\n", (float) steps * 6.5 * 3.14 / 32 / time);
+      printf("counterclockwise: %1.3f\r\n", (float) steps * 6.5 * 3.1415 / 32 / time1);
+
+      servo_control(-27.19);
+
+      steps = 0;
+      t.reset();
+      t.start();
+
+      ThisThread::sleep_for(5000ms);
+
+      float time2 = t.read();
+
+      printf("clockwise: %1.3f\r\n", (float) steps * 6.5 * 3.1415 / 32 / time2);
 
    }
 }
